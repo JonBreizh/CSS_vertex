@@ -4,8 +4,28 @@
 	<title>CSS Vertex</title>
 </head>
 <body>
+
+    <style type="text/css">
+	.broken_square {
+		background:red;width:640px;height:250px;margin-left:auto;margin-right:auto;margin-top:10%;
+		-webkit-transition: -webkit-filter linear 1s;
+	}
+
+    .shader {
+	-webkit-filter: custom(url(shaders/detached_tiles.vs) mix(url(shaders/detached_tiles.fs) normal source-atop), 5 5 border-box detached, amount 150.0, t 1.0, transform rotateX(45deg) rotateZ(-20deg)) grayscale(1);
+    }
+
+    .shader:hover{
+	-webkit-filter: custom(url(shaders/detached_tiles.vs) mix(url(shaders/detached_tiles.fs) normal source-atop), 5 5 border-box detached, amount 75.0, t 0.0, transform rotateX(0deg)) grayscale(0);;
+	-webkit-filter-margin: 40%;
+    }
+
+
+    </style>
+
+
 	<div id="holder">
-		<div class="broken_square">
+		<div class="broken_square shader">
 			<img src="img/hello.png">
 		</div>
 	</div>
