@@ -7,13 +7,37 @@
     areaPos: $('.holder.big').position(),
     areaMX: $('.mouseX'),
     areaMY: $('.mouseY'),
-    mouseCoordinates: $('.holder.big').mousemove(function(e) {
-      verteX.areaMX.text(e.pageX - verteX.areaPos.left);
-      verteX.areaMY.text(e.pageY - verteX.areaPos.top);
+    HorVal: $('.HOR'),
+    VerVal: $('.VER'),
+    minHor: 30,
+    maxHor: -30,
+    minVer: 20,
+    maxVer: -20,
+    init: function() {
+      verteX.stepsCalcul();
       return true;
-    })
+    },
+    stepsCalcul: function() {
+      var divHeight, divWidth;
+      divWidth = parseInt(verteX.area.css('width'));
+      divHeight = parseInt(verteX.area.css('height'));
+      verteX.HorStep = divWidth / ((Math.abs(verteX.minHor) + Math.abs(verteX.maxHor)));
+      verteX.VerStep = divHeight / ((Math.abs(verteX.minVer) + Math.abs(verteX.maxVer)));
+        console.log(verteX.minHor);
+        console.log(verteX.maxHor);
+      verteX.mouseCoordinates();
+      return true;
+    },
+    mouseCoordinates: function() {
+      return $('.holder.big').mousemove(function(e) {
+        verteX.areaMX.text(e.pageX - parseInt(verteX.areaPos.left));
+        verteX.areaMY.text(e.pageY - parseInt(verteX.areaPos.top));
+        verteX.HorVal.text(verteX.minHor - ((e.pageX - parseInt(verteX.areaPos.left)) / verteX.HorStep));
+        return true;
+      });
+    }
   };
 
-  verteX.mouseCoordinates;
+  verteX.init();
 
 }).call(this);
