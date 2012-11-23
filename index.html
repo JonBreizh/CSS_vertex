@@ -1,146 +1,32 @@
 <!-- CSS Vertex -->
 <html>
-<head>
-	<title>CSS Vertex</title>
-</head>
-<body>
-
-    <style type="text/css">
-    div[role="main"]{width:1290px;margin-left:auto;margin-right:auto;}
-    .holder {display:inline-block;border:1px solid gold;
-    	-webkit-box-sizing:border-box;
-    	-moz-box-sizing:border-box;
-    	box-sizing:border-box;
-    }
-
-    .holder.big {width:1280px;margin-left:auto;margin-right:auto;
--webkit-transform: perspective( 200px );
-
-    }
-    .holder.big .broken_square {width:1280px;height:500px;}
-    .holder.big:hover .broken_square {-webkit-transform:rotateX(10deg) rotateY(30deg);
-    	-webkit-transition:1s all ease;
-
-    }
-    .holder.big .broken_square img {width:100%;}
-
-	.broken_square {
-		background:red;width:640px;height:250px;margin-left:auto;margin-right:auto;margin-top:10%;
-		-webkit-transition: -webkit-filter linear 1s;
-	}
-
-    .shader {
-	-webkit-filter: custom(url(shaders/detached_tiles.vs) mix(url(shaders/detached_tiles.fs) normal source-atop), 
-		5 5 border-box detached, 
-		amount 0.0, 
-		t 1.0, 
-		transform rotateX(45deg) rotateZ(-20deg) scale(0.65))
-		grayscale(1);
-	/*-webkit-transform: scale(0.5)*/
-    }
-
-    .shader:hover{
-	-webkit-filter: custom(url(shaders/detached_tiles.vs) mix(url(shaders/detached_tiles.fs) normal source-atop), 5 5 border-box detached, amount 75.0, t 0.0, transform rotateX(0deg) scale(0.9)) grayscale(0);;
-	-webkit-filter-margin: 40%;
-    }
-
-
-    .anim {
-	-webkit-filter: custom(url(shaders/detached_tiles.vs) mix(url(shaders/detached_tiles.fs) normal source-atop), 
-		5 5 border-box detached, 
-		amount 100.0, 
-		t 1.0, 
-		transform rotateX(45deg) rotateZ(-20deg) scale(0.5))
-		grayscale(1) drop-shadow(0px 0px 1px gold);
-		-webkit-transition: -webkit-filter linear 1s;
-    }
-
-
-    .anim:hover {
-		-webkit-animation-duration: 5s;
-		-webkit-animation-name: animatE;
-		-webkit-animation-iteration-count: infinite;
-		-webkit-animation-direction: alternate;
-    }
-
-	@-webkit-keyframes animatE {
-	  from {
-		-webkit-filter: custom(url(shaders/detached_tiles.vs) mix(url(shaders/detached_tiles.fs) normal source-atop), 
-			5 5 border-box detached, 
-			amount 100.0, 
-			t 1.0, 
-			transform rotateX(45deg) rotateZ(-20deg) scale(0.5))
-			grayscale(1) drop-shadow(0px 0px 1px gold);
-			-webkit-transform:rotate(0deg);
-			-webkit-transform:rotateY(0deg);
-			-webkit-transform:rotateZ(0deg);
-	  }
-	  to {
-		-webkit-filter: custom(url(shaders/detached_tiles.vs) mix(url(shaders/detached_tiles.fs) normal source-atop), 
-			5 5 border-box detached,
-			amount 1.0, 
-			t 1.0, 
-			transform rotateX(35deg) rotateZ(-20deg) scale(0.65))
-			grayscale(0) drop-shadow(8px 8px 10px gold);
-
-			-webkit-transform:rotate(30deg);
-			-webkit-transform:rotateY(30deg);
-			-webkit-transform:rotateZ(20deg);
-	  }
-	}
-    </style>
-
-<div role="main">
-	<div class="holder">
-		<p>Hover</p>
-		<div class="broken_square shader">
-			<img src="img/hello.png">
+	<head>
+		<title>CSS Vertex</title>
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+	</head>
+	<body>
+	<div role="main">
+		<div class="holder">
+			<p>Hover</p>
+			<div class="broken_square shader">
+				<img src="img/hello.png">
+			</div>
 		</div>
-	</div>
-	<div class="holder">
-		<p>Animation on hover</p>
-		<div class="broken_square anim">
-			<img src="img/hello.png">
+		<div class="holder">
+			<p>Animation on hover</p>
+			<div class="broken_square anim">
+				<img src="img/hello.png">
+			</div>
 		</div>
-	</div>
-	<div class="holder big">
-		<p>X:<span class="mouseX"></span> Y:<span class="mouseY"></span></p>
-		<p>Horizontal:<span class="HOR"></span> Vertical:<span class="VER"></span></p>
-		<div class="broken_square user">
-			<img src="img/hello.png">
+		<div class="holder big">
+			<p>X:<span class="mouseX"></span> Y:<span class="mouseY"></span></p>
+			<p>Horizontal:<span class="HOR"></span> Vertical:<span class="VER"></span></p>
+			<div class="broken_square user">
+				<img src="img/hello.png">
+			</div>
 		</div>
-	</div>
-</div>
-
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-<script type="text/javascript">
-//$(document).ready(function(){
-
-//	var userArea = $('.holder.big');
-
-//	$('.holder.big').mousemove(function(e) {
-//		$('.mouseX').text(e.pageX-);
-//		$('.mouseY').text(e.pageY-);
-//	});
-
-
-
-//	var amountVal = 100; //0 > 150
-//	var greyVal = 0; //0 > 1
-//	var user = $('.user');
-//	var currentStyleString = 'custom(url(file:///E:/Partage/Jonathan/_MISC/Documents/CSS_vertex/shaders/detached_tiles.vs) mix(url(file:///E:/Partage/Jonathan/_MISC/Documents/CSS_vertex/shaders/detached_tiles.fs) normal source-atop), 5 5 //border-box detached, amount '+amountVal+', t 1, transform matrix3d(0.6108002035108405, -0.15719909572118393, -0.1571990957211839, 0, 0.22231309316168468, 0.4319009658526386, 0.43190096585263854, 0, 0, -0.7071067811865475, 0.//7071067811865476, 0, 0, 0, 0, 1)) grayscale('+greyVal+')';
-
-//	var currentStyleStringTest = 'custom(url(file:///E:/Partage/Jonathan/_MISC/Documents/CSS_vertex/shaders/detached_tiles.vs) mix(url(file:///E:/Partage/Jonathan/_MISC/Documents/CSS_vertex/shaders/detached_tiles.fs) normal source-atop), 5 5 //border-box detached, amount '+amountVal+', t 1, transform matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1)) grayscale('+greyVal+')';
-
-//	user.mouseover(function(){
-//		user.css('-webkit-filter',currentStyleString);
-//	});
-//})
-
-</script>
-
-
-<script type="text/javascript" src="js/script.js"></script>
-
-</body>
+		</div>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+		<script type="text/javascript" src="js/script.js"></script>
+	</body>
 </html>
